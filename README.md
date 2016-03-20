@@ -103,9 +103,40 @@ curl --include \
     \"id\" : \"giphy-responder\",
     \"name\" : \"Giphy Responder\",
     \"content\": {
-        \"from\": \"gifs@aydrian.me\",
+        \"from\":
+          {
+            \"name\" : \"Giphy Responder\",
+            \"email\" : \"giphy-responder@aydrian.me\"
+          }
         \"subject\": \"Your {{ search }} gifs!\",
-        \"html\": \"<b>TODO Add Template</b>\"
+        \"html\": \"<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+        <html xmlns="http://www.w3.org/1999/xhtml">
+            <head>
+                <title>Giphy Responser</title>
+                <style type="text/css">
+                    * {
+                        font-family: Helvetica, Arial, sans-serif;
+                    }
+                </style>
+            </head>
+            <body style="text-align:center;">
+                <h1>{{ search }} gifs!</h1>
+                {{ if not empty(gifs) }}
+                <ul style="list-style-type: none;padding:0;margin:0;">
+                    {{ each gifs }}
+                    <li><a href="{{{ loop_var.url }}}"><img src="{{ loop_var.src }}" /></a></li>
+                    {{ end }}
+                </ul>
+                {{ else }}
+                <h3>Sorry, no gifs were found.</h3>
+                {{ end }}
+
+                <p>
+                    Email sent using <a href="https://developers.sparkpost.com" data-msys-linkname="Developer Hub">SparkPost</a>.<br/>
+                    <a href="https://github.com/aydrian/giphy-responder"data-msys-linkname="Giphy Responder">Giphy Responder</a>
+                </p>
+            </body>
+        </html>\"
     }
 }" \
 'https://api.sparkpost.com/api/v1/templates'
