@@ -76,7 +76,6 @@ curl --include \
      --data-binary "{
   \"name\": \"Giphy Responder Webhook\",
   \"target\": \"https://15778980.ngrok.io/incoming\",
-  \"auth_token\": \"\",
   \"match\":
     {
       \"protocol\": \"SMTP\",

@@ -5,8 +5,24 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["sparkpost", "webhooks", "inbound", "email", "giphy"],
-  "author": "Aydrian Howard <aydrian@sparkpost.com>",
+  "keywords": [
+    "sparkpost",
+    "webhooks",
+    "inbound",
+    "email",
+    "giphy"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aydrian/giphy-responder"
+  },
+  "author": "Aydrian Howard (aydrian@sparkpost.com)",
   "license": "ISC",
-  "description": "A small application that will respond to an email with trending giphy links."
+  "description": "A small application that will respond to an email with trending giphy links.",
+  "dependencies": {
+    "axios": "^0.9.1",
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "sparkpost": "^1.2.0"
+  }
 }
