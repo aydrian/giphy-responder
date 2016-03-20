@@ -1,0 +1,12 @@
+{
+  "name": "giphy-responder",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["sparkpost", "webhooks", "inbound", "email", "giphy"],
+  "author": "Aydrian Howard <aydrian@sparkpost.com>",
+  "license": "ISC",
+  "description": "A small application that will respond to an email with trending giphy links."
+}
