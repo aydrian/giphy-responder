@@ -3,8 +3,7 @@
 # Giphy Responder
 
 This application will utilize [SparkPost][1] to respond
-to an email with trending gifs using the [Giphy API](https://github.com/Giphy/GiphyAPI)
-based on the subject line.
+to an email with gifs using the [Giphy API](https://github.com/Giphy/GiphyAPI) search based keywords in the subject line.
 
 ## Setup
 
@@ -95,6 +94,20 @@ If you are using the [SparkPost Heroku Add-On][3], you can access the SparkPost 
 I have provided the following [template](/resources/template.html) to get you started. You can use the following [script](/resources/scripts/addTemplate.js) to add it your [SparkPost][1] account. Make sure to update the `API_KEY` and `SENDING_DOMAIN` variables with your API Key and verified Sending Domain. In a terminal, you can run `node ./resources/scripts/addTemplate.js` from the project root. Once it's added, you can view it using the [SparkPost Template UI](https://app.sparkpost.com/templates) and make any modifications. Use the provided [sample JSON](/resources/sample.json) to preview what a completed email will look like. Be sure to publish the template before use this application.
 
 For more information, see the [SparkPost API Documentation for Templates](https://developers.sparkpost.com/api/#/reference/templates)
+
+## Deploying to Heroku
+
+Click this button:
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+Or use the Heroku Toolbelt:
+
+```
+$ heroku create
+$ git push heroku master
+$ heroku open
+```
 
 [1]: https://www.sparkpost.com/
 [2]: https://app.sparkpost.com/sign-up?src=Dev-Website&sfdcid=701600000011daf&_ga=1.204138960.1347218848.1425988764

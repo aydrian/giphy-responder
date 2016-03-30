@@ -18,7 +18,7 @@
   },
   "author": "Aydrian Howard (aydrian@sparkpost.com)",
   "license": "ISC",
-  "description": "A small application that will respond to an email with trending giphy links.",
+  "description": "A small application that will respond to an email with giphy images based on keywords provided in the email subject.",
   "dependencies": {
     "axios": "^0.9.1",
     "body-parser": "^1.15.0",

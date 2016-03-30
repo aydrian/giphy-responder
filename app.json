@@ -1,0 +1,11 @@
+{
+  "name": "SparkPost Giphy Responder",
+  "description": "A small nodejs application that will respond to an email with giphy images based on keywords provided in the email subject.",
+  "repository": "https://github.com/aydrian/giphy-responder",
+  "logo": "https://pbs.twimg.com/profile_images/662780293145751552/whPOVqHK.png",
+  "website": "https://develoers.sparkpost.com",
+  "keywords": ["node", "express", "sparkpost", "email", "giphy"],
+  "addons": [
+    "sparkpost"
+  ]
+}
