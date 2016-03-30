@@ -3,14 +3,14 @@
 # Giphy Responder
 
 This application will utilize [SparkPost][1] to respond
-to an email with gifs using the [Giphy API](https://github.com/Giphy/GiphyAPI) search based keywords in the subject line.
+to an email with gifs using the [Giphy API](https://github.com/Giphy/GiphyAPI) search based on keywords in the subject line.
 
 ## Setup
 
 Before you can use this application, you must have a SparkPost Account. You will also need to configure a Template, Sending Domain, Inbound Domain, and Relay Webhook. You will also need to have a domain name and access to modify it's TXT and MX DNS records.
 
 ### Sign up for a Free SparkPost Account.
-[SparkPost][1] will allow you to send up to 100,000 emails a month for free. You can either [Sign-up Here][2] or use the [SparkPost Heroku Add-On][3]. If you are using Heroku, I recommend watching the [How To Use the SparkPost Heroku Add-On](https://developers.sparkpost.com/videos/heroku_addon.html) video.
+[SparkPost][1] will allow you to send up to 100,000 emails a month for free. You can either [Sign up Here][2] or use the [SparkPost Heroku Add-On][3]. If you are using Heroku, I recommend watching the [How To Use the SparkPost Heroku Add-On](https://developers.sparkpost.com/videos/heroku_addon.html) video.
 
 ### Create an API Key
 In order to interact with the [SparkPost API](https://developers.sparkpost.com/api), we will need to create an API Key with the following access:
@@ -35,7 +35,7 @@ For best inbox placement, it is recommended that you setup both SPF & DKIM by ad
 For more information, see the [SparkPost API Documentation for Sending Domains](https://developers.sparkpost.com/api/#/reference/sending-domains)
 
 ### Configure your Inbound Domain
-Decide what your Inbound Domain will be. It should be a subdomain off your sending domain. For this application, I am going to use `sup.aydrian.me`. For the rest of this README, substitute your domain for it.
+Decide what your Inbound Domain will be. It should be a subdomain of your sending domain. For this application, I am going to use `sup.aydrian.me`. For the rest of this README, substitute your domain for it.
 
 #### DNS Changes
 Add the following MX records to your DNS
@@ -87,7 +87,7 @@ curl --include \
 For more information, see the [SparkPost API Documentation for Relay Webhooks](https://developers.sparkpost.com/api/#/reference/relay-webhooks)
 
 ### Configure the Template
-To make our live easier, we are going to use a [SparkPost][1] Template when triggering the response email back to the sender. You can create/modify templates using the [SparkPost Template UI](https://app.sparkpost.com/templates).
+To make our lives easier, we are going to use a [SparkPost][1] Template when triggering the response email back to the sender. You can create/modify templates using the [SparkPost Template UI](https://app.sparkpost.com/templates).
 
 If you are using the [SparkPost Heroku Add-On][3], you can access the SparkPost Dashboard by entering `heroku addons:open sparkpost` in the [Heroku Toolbelt][4] and then navigate to Templates.
 
