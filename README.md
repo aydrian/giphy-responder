@@ -92,55 +92,7 @@ To make our live easier, we are going to use a [SparkPost][1] Template when trig
 
 If you are using the [SparkPost Heroku Add-On][3], you can access the SparkPost Dashboard by entering `heroku addons:open sparkpost` in the [Heroku Toolbelt][4] and then navigate to Templates.
 
-I have provided the following cURL to get you started. Before running it in the terminal, make sure to substitute your API Key and modify the from address to use your verified Sending Domain.
-
-```
-curl --include \
-     --request POST \
-     --header "Content-Type: application/json" \
-     --header "Authorization: <YOUR_API_KEY>" \
-     --data-binary "{
-    \"id\" : \"giphy-responder\",
-    \"name\" : \"Giphy Responder\",
-    \"content\": {
-        \"from\":
-          {
-            \"name\" : \"Giphy Responder\",
-            \"email\" : \"giphy-responder@aydrian.me\"
-          }
-        \"subject\": \"Your {{ search }} gifs!\",
-        \"html\": \"<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-        <html xmlns="http://www.w3.org/1999/xhtml">
-            <head>
-                <title>Giphy Responser</title>
-                <style type="text/css">
-                    * {
-                        font-family: Helvetica, Arial, sans-serif;
-                    }
-                </style>
-            </head>
-            <body style="text-align:center;">
-                <h1>{{ search }} gifs!</h1>
-                {{ if not empty(gifs) }}
-                <ul style="list-style-type: none;padding:0;margin:0;">
-                    {{ each gifs }}
-                    <li><a href="{{{ loop_var.url }}}"><img src="{{ loop_var.src }}" /></a></li>
-                    {{ end }}
-                </ul>
-                {{ else }}
-                <h3>Sorry, no gifs were found.</h3>
-                {{ end }}
-
-                <p>
-                    Email sent using <a href="https://developers.sparkpost.com" data-msys-linkname="Developer Hub">SparkPost</a>.<br/>
-                    <a href="https://github.com/aydrian/giphy-responder"data-msys-linkname="Giphy Responder">Giphy Responder</a>
-                </p>
-            </body>
-        </html>\"
-    }
-}" \
-'https://api.sparkpost.com/api/v1/templates'
-```
+I have provided the following [template](/resources/template.html) to get you started. You can use the following [script](/resources/scripts/addTemplate.js) to add it your [SparkPost][1] account. Make sure to update the `API_KEY` and `SENDING_DOMAIN` variables with your API Key and verified Sending Domain. In a terminal, you can run `node ./resources/scripts/addTemplate.js` from the project root. Once it's added, you can view it using the [SparkPost Template UI](https://app.sparkpost.com/templates) and make any modifications. Use the provided [sample JSON](/resrouces/sample.json) to preview what a completed email will look like. Be sure to publish the template before use this application.
 
 For more information, see the [SparkPost API Documentation for Templates](https://developers.sparkpost.com/api/#/reference/templates)
 
