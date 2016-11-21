@@ -7,7 +7,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "pretest": "standard",
+    "test": "echo \"Error: no test specified\" && exit 0"
   },
   "keywords": [
     "sparkpost",
@@ -28,5 +29,8 @@
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "sparkpost": "^1.2.0"
+  },
+  "devDependencies": {
+    "standard": "^8.5.0"
   }
 }
