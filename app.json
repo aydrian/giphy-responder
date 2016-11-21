@@ -4,8 +4,5 @@
   "repository": "https://github.com/aydrian/giphy-responder",
   "logo": "https://pbs.twimg.com/profile_images/662780293145751552/whPOVqHK.png",
   "website": "https://develoers.sparkpost.com",
-  "keywords": ["node", "express", "sparkpost", "email", "giphy"],
-  "addons": [
-    "sparkpost"
-  ]
+  "keywords": ["node", "express", "sparkpost", "email", "giphy"]
 }
