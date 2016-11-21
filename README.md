@@ -37,7 +37,7 @@ If you are using the [SparkPost Heroku Add-On][3], you can access the SparkPost 
 
 For best inbox placement, it is recommended that you setup both SPF & DKIM by adding 2 TXT records to your domain's DNS. Once the SPF & DKIM are verified, your domain is ready for sending.
 
-For more information, see the [SparkPost API Documentation for Sending Domains](https://developers.sparkpost.com/api/#/reference/sending-domains)
+For more information, see the [SparkPost API Documentation for Sending Domains](https://developers.sparkpost.com/api/sending-domains)
 
 ### Configure your Inbound Domain
 Decide what your Inbound Domain will be. It should be a subdomain of your sending domain. For this application, I am going to use `sup.aydrian.me`. For the rest of this README, substitute your domain for it.
@@ -67,7 +67,7 @@ curl --include \
 'https://api.sparkpost.com/api/v1/inbound-domains'
 ```
 
-For more information, see the [SparkPost API Documentation for Inbound Domains](https://developers.sparkpost.com/api/#/reference/inbound-domains)
+For more information, see the [SparkPost API Documentation for Inbound Domains](https://developers.sparkpost.com/api/inbound-domains)
 
 ### Configure your Relay Webhook
 When [SparkPost][1] receives an email sent to `{anything}@sup.aydrian.me`, it will parse the message and `POST` a JSON object to the endpoint specified in the Relay Webhook for the `sup.aydrian.me` Inbound Domain. Currently, there is no UI to manage Relay Webhooks so we'll have to use the [SparkPost API](https://developers.sparkpost.com/api/). Run the following cURL command in your terminal. Be sure to substitute your API Key, inbound domain, and target. Where you are running this app will determine the domain for the target. You may choose to use [ngrok](https://ngrok.com/) and just run it locally.
@@ -89,7 +89,7 @@ curl --include \
 'https://api.sparkpost.com/api/v1/relay-webhooks'
 ```
 
-For more information, see the [SparkPost API Documentation for Relay Webhooks](https://developers.sparkpost.com/api/#/reference/relay-webhooks)
+For more information, see the [SparkPost API Documentation for Relay Webhooks](https://developers.sparkpost.com/api/relay-webhooks)
 
 ### Configure the Template
 To make our lives easier, we are going to use a [SparkPost][1] Template when triggering the response email back to the sender. You can create/modify templates using the [SparkPost Template UI](https://app.sparkpost.com/templates).
@@ -98,7 +98,7 @@ If you are using the [SparkPost Heroku Add-On][3], you can access the SparkPost 
 
 I have provided the following [template](/resources/template.html) to get you started. You can use the following [script](/resources/scripts/addTemplate.js) to add it your [SparkPost][1] account. Make sure to update the `API_KEY` and `SENDING_DOMAIN` variables with your API Key and verified Sending Domain. In a terminal, you can run `node ./resources/scripts/addTemplate.js` from the project root. Once it's added, you can view it using the [SparkPost Template UI](https://app.sparkpost.com/templates) and make any modifications. Use the provided [sample JSON](/resources/sample.json) to preview what a completed email will look like. Be sure to publish the template before use this application.
 
-For more information, see the [SparkPost API Documentation for Templates](https://developers.sparkpost.com/api/#/reference/templates)
+For more information, see the [SparkPost API Documentation for Templates](https://developers.sparkpost.com/api/templates)
 
 ## Deploying to Heroku
 
