@@ -1,6 +1,7 @@
 <a href="https://developers.sparkpost.com"><img src="https://www.sparkpost.com/sites/default/files/attachments/SparkPost_Logo_2-Color_Gray-Orange_RGB.svg" width="200px"/></a>
 
 # Giphy Responder
+[![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
 This application will utilize [SparkPost][1] to respond
 to an email with gifs using the [Giphy API](https://github.com/Giphy/GiphyAPI) search based on keywords in the subject line.
