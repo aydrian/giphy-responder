@@ -15,7 +15,7 @@ Send an email to gifme@sup.aydrian.me with keywords in the subject line. You'll 
 Before you can use this application, you must have a SparkPost Account. You will also need to configure a Template, Sending Domain, Inbound Domain, and Relay Webhook. You will also need to have a domain name and access to modify it's TXT and MX DNS records.
 
 ### Sign up for a Free SparkPost Account.
-[SparkPost][1] will allow you to send up to 100,000 emails a month for free. You can either [Sign up Here][2] or use the [SparkPost Heroku Add-On][3]. If you are using Heroku, I recommend watching the [How To Use the SparkPost Heroku Add-On](https://developers.sparkpost.com/videos/heroku_addon.html) video.
+[SparkPost][1] will allow you to send up to 100,000 emails a month for free. You can either [Sign up Here][2] or use the [SparkPost Heroku Add-On][3]. If you are using Heroku, I recommend watching the [How To Use the SparkPost Heroku Add-On](https://www.youtube.com/watch?v=Yg4z3vVcfhI) video.
 
 ### Create an API Key
 In order to interact with the [SparkPost API](https://developers.sparkpost.com/api), we will need to create an API Key with the following access:
