@@ -5,6 +5,10 @@
 This application will utilize [SparkPost][1] to respond
 to an email with gifs using the [Giphy API](https://github.com/Giphy/GiphyAPI) search based on keywords in the subject line.
 
+## Try It!
+
+Send an email to gifme@sup.aydrian.me with keywords in the subject line. You'll receive an email with 5 animated gifs matching that criteria.
+
 ## Setup
 
 Before you can use this application, you must have a SparkPost Account. You will also need to configure a Template, Sending Domain, Inbound Domain, and Relay Webhook. You will also need to have a domain name and access to modify it's TXT and MX DNS records.
