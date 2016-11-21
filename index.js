@@ -1,41 +1,43 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var axios = require('axios');
-var SparkPost = require('sparkpost');
+'use strict'
 
-var app = express();
+const express = require('express')
+const bodyParser = require('body-parser')
+const axios = require('axios')
+const SparkPost = require('sparkpost')
 
-app.set('port', process.env.PORT || 3000);
-app.use(bodyParser.json());
+const app = express()
 
-app.get('/', function(req, res) {
-  res.send('Hello World');
-});
+app.set('port', process.env.PORT || 3000)
+app.use(bodyParser.json())
+
+app.get('/', (req, res) => {
+  res.send('Hello World')
+})
 
 /**
   Takes a Giphy API response and returns only the data
   we need in a format the template expects
 **/
-var processGiphyResults = function(response) {
-  var data = response.data.data;
-  var gifs = []
-  for(var i=0; i<data.length; i++) {
+const processGiphyResults = function (response) {
+  const data = response.data.data
+  let gifs = []
+  for (let i = 0; i < data.length; i++) {
     gifs.push({
       src: data[i].images.fixed_height_small.url,
       url: data[i].url
-    });
+    })
   }
-  return gifs;
-};
+  return gifs
+}
 
 /**
   Takes data from the relay_message event and Giphy API response and sends
   an email response back to the sender
 **/
-var sendResponse = function(data) {
+const sendResponse = function (data) {
   // The API Key in the SPARKPOST_API_KEY enviroment variable will be used
   // to create the client
-  var client = new SparkPost();
+  const client = new SparkPost()
   client.transmissions.send({
     transmissionBody: {
       campaignId: 'giphy-responder',
@@ -48,23 +50,23 @@ var sendResponse = function(data) {
       },
       recipients: [{ address: { email: data.msg_from } }]
     }
-  }, function(err, res) {
+  }, function (err, res) {
     if (err) {
-      console.log(err);
+      console.log(err)
     } else {
-      console.log('Giphy Response sent to: ', data.msg_from);
+      console.log('Giphy Response sent to: ', data.msg_from)
     }
-  });
-};
+  })
+}
 
 /**
   Process a single relay_message event
   The following support article describes the relay_message event object
   https://support.sparkpost.com/customer/portal/articles/2039614
 **/
-var processRelayMessage = function(data) {
-  console.log('Email received from: ', data.msg_from);
-  console.log('Searching for: ', data.content.subject);
+const processRelayMessage = function (data) {
+  console.log('Email received from: ', data.msg_from)
+  console.log('Searching for: ', data.content.subject)
   // We start by using the Giphy API to search for gifs based on the subject
   axios.get('http://api.giphy.com/v1/gifs/search', {
     params: {
@@ -75,33 +77,33 @@ var processRelayMessage = function(data) {
     }
   })
   .then(processGiphyResults)
-  .then(function(gifs) {
+  .then(gifs => {
     // Add the array of gifs to the data so it can be passed on to sendResponse
-    data.gifs = gifs;
-    return data;
+    data.gifs = gifs
+    return data
   })
   .then(sendResponse)
-  .catch(function(err) {
-    console.log(err);
-  });
-};
+  .catch(err => {
+    console.log(err)
+  })
+}
 
 /**
   Defines the endpoint that will accept batches from SparkPost
 **/
-app.post('/incoming', function(req, res) {
+app.post('/incoming', (req, res) => {
   // SparkPost expects a 200 response, send it before processing data
   // If you are storing data, do it before returning a response
-  res.sendStatus(200);
-  var batch = req.body;
+  res.sendStatus(200)
+  const batch = req.body
   // A batch could contain up to 10,000 events
-  for(var i=0; i<batch.length; i++) {
+  for (let i = 0; i < batch.length; i++) {
     // For this application, we can safely assume the batch will only
     // contain relay_message events
-    processRelayMessage(batch[i].msys.relay_message);
+    processRelayMessage(batch[i].msys.relay_message)
   }
-});
+})
 
-app.listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
-});
+app.listen(app.get('port'), () => {
+  console.log('Express server listening on port ' + app.get('port'))
+})

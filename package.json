@@ -1,6 +1,9 @@
 {
   "name": "giphy-responder",
   "version": "1.0.0",
+  "engines": {
+    "node": "4.4.4"
+  },
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -21,9 +24,9 @@
   "license": "ISC",
   "description": "A small application that will respond to an email with giphy images based on keywords provided in the email subject.",
   "dependencies": {
-    "axios": "^0.9.1",
-    "body-parser": "^1.15.0",
-    "express": "^4.13.4",
+    "axios": "^0.15.2",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
     "sparkpost": "^1.2.0"
   }
 }
